@@ -25,6 +25,7 @@ SCRIPT_RANGES: list[tuple[int, int, str]] = [
     (0x1000, 0x109F, "Myanmar"),
     (0x10A0, 0x10FF, "Georgian"),
     (0x1100, 0x11FF, "Hangul"),
+    (0xAC00, 0xD7AF, "Hangul"),
     (0x13A0, 0x13FF, "Cherokee"),
     (0x1700, 0x171F, "Tagalog"),
     (0x1800, 0x18AF, "Mongolian"),

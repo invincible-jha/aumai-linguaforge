@@ -383,8 +383,11 @@ class TextNormalizer:
         normalized = re.sub(r"\n{3,}", "\n\n", normalized)
         normalized = normalized.strip()
 
-        # Remove zero-width joiners and non-breaking spaces
-        for zwc in ("\u200b", "\u200c", "\u200d", "\u2060", "\ufeff", "\u00a0"):
+        # Remove zero-width characters that have no linguistic meaning.
+        # U+200C (ZWNJ) and U+200D (ZWJ) are intentionally preserved because
+        # they are semantically significant in Brahmic/Indic scripts (e.g. they
+        # control conjunct formation in Devanagari, Malayalam, etc.).
+        for zwc in ("\u200b", "\u2060", "\ufeff", "\u00a0"):
             normalized = normalized.replace(zwc, "")
 
         lang = SUPPORTED_LANGUAGES.get(language)
